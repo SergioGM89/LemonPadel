@@ -6,8 +6,12 @@ name: Web CI
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'src/web/**'
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'src/web/**'
 
 jobs:
   build:

@@ -1,0 +1,60 @@
+<div class="layout-container">
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <button mat-icon-button class="hamburger-button" (click)="toggleMobileMenu()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="mobile-logo">
+      <span class="logo"></span>
+      <h1 class="logo-text">Lemon Padel</h1>
+    </div>
+  </header>
+
+  <!-- Overlay for mobile menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="mobile-overlay" (click)="toggleMobileMenu()"></div>
+  }
+
+  <!-- Sidebar -->
+  <aside class="sidebar bg-sidebar" [class.mobile-open]="isMobileMenuOpen()">
+    <div class="sidebar-content">
+      <button mat-icon-button class="arrow-back" (click)="toggleMobileMenu()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <div class="logo-section">
+        <div class="logo-container">
+          <span class="logo"></span>
+          <h1 class="logo-text">Lemon Padel</h1>
+        </div>
+      </div>
+
+      <nav class="nav-section">
+        @for (item of menuItems; track item.path) {
+          <a class="nav-item"
+             [routerLink]="item.path"
+             routerLinkActive="active"
+             (click)="updateTitle(item.label)">
+            <mat-icon>{{ item.icon }}</mat-icon>
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </nav>
+
+      <div class="user-section">
+        <a class="user-profile" href="#">
+          <div class="user-avatar"></div>
+          <div class="user-info">
+            <p class="user-name">Sergio Gil</p>
+            <p class="user-action">Ver perfil</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

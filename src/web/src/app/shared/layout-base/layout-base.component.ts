@@ -31,7 +31,6 @@ export class LayoutBaseComponent {
 
   updateTitle(title: string) {
     this.pageTitle.set(title);
-    // Cerrar menú móvil al navegar
     this.isMobileMenuOpen.set(false);
   }
 

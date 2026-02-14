@@ -1,1 +1,199 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Import Material theme
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define custom color palettes
+$lemon-padel-primary: mat.m2-define-palette((
+  50: #e9f7fd,
+  100: #c8ecfa,
+  200: #a3dff7,
+  300: #7ed2f4,
+  400: #63c9f1,
+  500: #48BDEE,
+  600: #41b7ec,
+  700: #38aee9,
+  800: #30a6e7,
+  900: #2198e2,
+  A100: #ffffff,
+  A200: #dff1ff,
+  A400: #accfff,
+  A700: #92c3ff,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  )
+), 500);
+
+$lemon-padel-accent: mat.m2-define-palette((
+  50: #fafee9,
+  100: #f3fdc9,
+  200: #ebfba5,
+  300: #e3fa80,
+  400: #ddf865,
+  500: #D3F44C,
+  600: #cef345,
+  700: #c8f13c,
+  800: #c2ef33,
+  900: #b7ec24,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffed,
+  A700: #ffffd4,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: rgba(black, 0.87),
+    400: rgba(black, 0.87),
+    500: rgba(black, 0.87),
+    600: rgba(black, 0.87),
+    700: rgba(black, 0.87),
+    800: rgba(black, 0.87),
+    900: rgba(black, 0.87),
+    A100: rgba(black, 0.87),
+    A200: rgba(black, 0.87),
+    A400: rgba(black, 0.87),
+    A700: rgba(black, 0.87),
+  )
+), 500);
+
+$lemon-padel-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// Define dark theme
+$lemon-padel-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $lemon-padel-primary,
+    accent: $lemon-padel-accent,
+    warn: $lemon-padel-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
+
+// Include theme styles for core and each component used in your app
+@include mat.all-component-themes($lemon-padel-theme);
+
+// Global styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #121212;
+  color: #f6f7f8;
+}
+
+// Custom CSS Variables
+:root {
+  --color-primary: #48BDEE;
+  --color-secondary: #D3F44C;
+  --color-background-dark: #121212;
+  --color-background-light: #f6f7f8;
+  --color-surface-dark: #1C1C1C;
+  --color-surface-darker: #1A1A1A;
+  --color-text-primary: #f6f7f8;
+  --color-text-secondary: #9ca3af;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+// Utility classes matching the design
+.bg-surface {
+  background-color: var(--color-surface-dark);
+}
+
+.bg-sidebar {
+  background-color: var(--color-surface-darker);
+}
+
+.text-muted {
+  color: var(--color-text-secondary);
+}
+
+.border-subtle {
+  border-color: var(--color-border);
+}
+
+// Card styles
+.card {
+  background-color: var(--color-surface-dark);
+  border-radius: 0.75rem;
+  padding: 1rem;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+}
+
+// Icon container
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(72, 189, 238, 0.1);
+  color: var(--color-primary);
+  border-radius: 0.5rem;
+  flex-shrink: 0;
+}
+
+// Button overrides for Material buttons
+.mat-mdc-button,
+.mat-mdc-raised-button {
+  &.button-primary {
+    background-color: var(--color-primary) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+
+    &:hover {
+      background-color: rgba(72, 189, 238, 0.8) !important;
+    }
+  }
+
+  &.button-secondary {
+    background-color: var(--color-secondary) !important;
+    color: #000 !important;
+    font-weight: 700;
+
+    &:hover {
+      background-color: rgba(211, 244, 76, 0.8) !important;
+    }
+  }
+}
+
+// Link styles
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
